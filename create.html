@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>create account</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<link rel="stylesheet" type="text/css" href="create.css">
+</head>
+<body>
+	<div class="form">
+		<form  onsubmit="return false;" id="signupform" name="signupform">
+			<center><h3>create account</h3></center>
+<!--<p>user name class="register-form"</p>-->
+<div>
+<label for="username" >username:</label>
+<input type="text" placeholder="username" id="username">
+</div>
+<!--<p>password</p>-->
+
+<div>
+<label for="password"  >password:</label>
+<input type="password" name="q1" placeholder="password" id="password">
+</div>
+<div >
+<label for="email">email:</label>
+<input type="text" name="e1" placeholder="email" id="email">
+</div>
+<div >
+<label for="mobile" >mobile:</label>
+<input type="text" name="n1" placeholder="mobile" id="mobile">
+</div>
+<div >
+<label for="address" >address:</label>
+<input type="text" name="t1" placeholder="flat-no,street,colonay" id="address"><br>
+</div>
+<button  type="submit" class="btn btn-default">sign up</button> 
+<br><br>
+  <div id="alert_msg"></div> 
+</form>
+</div>
+</body>
+</html>
+
+ <script>
+$(function(){
+  
+  $('#signupform').submit(function(){
+    var email = $('#email').val();
+    var password = $('#password').val();
+    var mobile = $('#mobile').val();
+    var username = $('#username').val();
+    var address = $('#address').val();
+    
+    $.ajax({
+      url: "https://bwv399umql.execute-api.us-east-1.amazonaws.com/ssaistage/saisignresource?email="+email+"&password="+password+"&mobile="+mobile+"&username="+username+"&address="+address+"&userno=2",
+      type:"GET",
+      success:function(data){
+        
+      }   
+    })
+    
+    $('#email').val('');
+    $('#password').val('');
+    $('#Mobile').val('');
+    $('#username').val('');
+    $('#address').val('');
+    
+    $('#alert_msg').html('<div class="alert alert-success"><strong>Success!</strong> Your Account has been successfully created  !!</div>')
+        
+    
+  })
+
+
+})
+
+</script>
+
+
+
+

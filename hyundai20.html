@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>marutivitabreeze</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<style type="">
+    table,th,td
+    {
+         border:2px solid black;
+         border-collapse:collapse
+         }
+    table
+    {
+    width:800px;
+    height:200px;
+    }
+    th
+    {
+      border-bottom:2px solid black;
+      text-decoration:none;
+    }
+    td
+    {
+      text-decoration:none;
+    }
+
+h1
+{
+  text-align:center;
+  color:red;
+
+}
+h3
+{
+ text-align:right;
+ font-size:30px;
+ margin-top:50px;
+}
+h2
+{
+  margin-left:400px;
+}
+  
+  button
+  {
+    margin-left:400px;
+    margin-top:30px;
+    padding:10px;
+    width:150px;
+    background-color:orange;
+  }
+  .first
+  {
+    border:1px solid black;
+    font-size:20px;
+  }
+  hr
+  {
+    color:black;
+    size:"4";
+  }
+  .thumbnail
+  {
+        border: 2px solid black;
+  }
+  .honda
+     {
+      margin-top: 49px
+        margin-left: 90px;
+    }
+</style>
+<body> 
+
+  
+<h1  id="car_name">Hyundai i20 Active </h1>
+<hr width="500">
+<div class="container">
+  <div class="row">
+    <div class="col-md-6">
+      <div class="thumbnail">
+        <!--<a href="#.jpg" target="_blank">-->
+          <img src="hyundaii20.jpg" alt="Lights" style="width:100%">
+          <!--<div class="caption">
+            <p>honda</p>
+          </div>-->
+      </div>
+    </div>
+    <h2 style="color:red;">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Hyundai i20 Active </h2>
+    <h3>Rs 6.7 - 9.88 Lakh*</h3>
+    <button id=buy"">Buy Now</button>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+    
+    <br>
+    
+<div class="first">
+       
+ Hyundai has made dual-front airbags as standard in the 2016 model year of Elite i20 and i20 Active . Earlier from last year, Hyundai Motor India Ltd introduced a 7” touchscreen Audio-Video navigation system for its highly sought after Elite i20 and i20 Active models. The new 7” touch screen Audio-Video Navigation system comes with pre-loaded Maps, satellite-based voice guided navigation, rear camera display and complete in-car entertainment and connectivity features.
+</div>
+<div class="honda">
+  <h1 color="black">DETAILS</h1>
+<table>
+  <tr>`
+    <th>economy</th>
+    <th>perforemence</th>
+    <th>comfort</th>
+    <th>safety</th>
+  </tr>
+  <tr>
+    <td>Mileage  &nbsp;:21.0 kmpl </td>
+    <td>Engine  &nbsp;1248 c</td>
+    <td> A/C &nbsp;:Yes</td>
+    <td>Central Lock :Yes</td>
+  </tr>
+  <tr>
+    <td>Service Cost :rs 4,400/yr</td>
+    <td>BHP :88.495</td>   
+    <td>Power Steering &nbsp;:Yes</td>
+    <td>Brake Assist &nbsp;:Yes</td>
+  </tr>
+  <tr>
+    <td>Fuel Type  :Diesel</td>
+    <td>No. of Cylinders &nbsp;: 4</td>
+    <td>Seating Capacity &nbsp;:5</td>
+    <td>Parking Sensor&nbsp;:Yes</td>
+  </tr>
+  <tr>
+    <td>Fuel Tank &nbsp;:50 Litres</td>
+    <td>No. of Gears &nbsp; :5 Speed</td>
+    <td>Boot Space&nbsp;:285-liter</td>
+    <td>Airbags&nbsp;:Yes</td>
+  </tr>
+</table>
+</div>
+
+
+
+
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+<script type="text/javascript">
+
+AWS.config.update({
+  region: "us-east-1",
+  endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+  accessKeyId: "AKIAJLTFOG6HZFP7RNZA",
+  secretAccessKey:  "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"
+});
+
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+
+$(function(){
+  var url_string = window.location.href
+  var url = new URL(url_string);
+  var email = url.searchParams.get("email");
+
+  $('#buy').click(function(){
+     login_files(email);
+
+  })
+ 
+
+
+
+
+})
+function login_files(email){
+ var form_email = email;
+  var params = {
+  TableName: "signup",
+  ProjectionExpression: "#email, #password, #address, #mobile, #username, #userno, #car_model, #car_name",
+  FilterExpression: "#email= :email",
+  ExpressionAttributeNames: {
+    "#email": "email",
+    "#password": "password",
+    "#address": "address",
+    "#mobile": "mobile",
+    "#username": "username",
+    "#userno": "userno",
+    "#car_model": "car_model",
+     "#car_name": "car_name"
+  },
+  ExpressionAttributeValues: {
+     ":email": form_email,
+  }
+  };
+  docClient.scan(params, onScan);
+}
+function onScan(err, data) {
+  if (err) {
+  console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+} else {
+  if(data.Items.length == 0)
+  {
+    alert('Invalid Login');
+  }
+  else{
+    var form_password = $('#password').val();
+    var email = data.Items[0].email;
+    var password = data.Items[0].password;
+    
+    var email = data.Items[0].email;
+    var password = data.Items[0].password;
+    var address = data.Items[0].address;
+    var mobile = data.Items[0].mobile;
+    var username = data.Items[0].username;
+    var userno = data.Items[0].userno;
+    var car_model = $('#car_name').html();
+    var car_name = $('#car_name').html();
+
+     $.ajax({
+      url: " https://wq8m3jz3h1.execute-api.us-east-1.amazonaws.com/retrivestage/updateresource?email="+email+"&password="+password+"&mobile="+mobile+"&username="+username+"&address="+address+"&userno=2&car_name="+car_name+"&car_model="+car_model,
+      type:"GET",
+      success:function(data){
+        
+      }   
+    })
+
+
+  }
+ }
+}
+
+function update_db(email,password){
+
+
+
+
+
+
+}
+</script> 
+</body>
+</html>

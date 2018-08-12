@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>home</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style>
+    /* Remove the navbar's default margin-bottom and rounded borders */ 
+    .navbar {
+      margin-bottom: 0;
+      border-radius: 0;
+    }
+    
+    /* Add a gray background color and some padding to the footer */
+    footer {
+      background-color:black;
+      padding: 25px;
+    }
+    
+  .carousel-inner img {
+      width: 100%; /* Set width to 100% */
+      margin: auto;
+      min-height:200px;
+  }
+
+  /* Hide the carousel text when the screen is less than 600 pixels wide */
+  @media (max-width: 600px) {
+    .carousel-caption {
+      display: none; 
+    }
+  }
+  body
+{
+  font-family:sans-serif;
+
+}
+h1
+{
+  text-align:center;
+  color:black;
+  background-color:lightgrey;
+  
+}
+.galary
+{
+  margin:10px 51px;
+}
+.galary img
+{
+  border:3px solid black;
+  width:230px;
+  padding:5px;
+  /*:grayscale(100%);*/
+      margin: 15px;
+  transition:1s;
+}
+.galary img:hover
+{
+  filter:grayscale(0);
+  transform:scale(1.1);
+}
+.img-responsive, .thumbnail a>img, .thumbnail>img {
+     
+    border: 1px solid black;
+}
+h5
+{
+  font-size:25px;
+  color:red;
+}
+
+.aboutus
+    {
+      border:2px solid black;
+    }
+    
+  </style>
+</head>
+<body>
+
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="home.html">
+        <img src="carlogo.png" alt="Logo" style="width:40px; height:30px;">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="contact">Contact us</a></li>
+        <li><a href="#about us">About us</a></li>
+        <li><a href="allcars">All cars</a></li>
+        
+      </ul> 
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="create"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="myaccount"><span class="glyphicon glyphicon-user"></span>my account</a></li>
+    <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+<!--<div class="row">
+    <div class="logo"><img src="logo.png"></div>
+    <ul class="first">
+      <li class="ok"><a href="">home</a></li>
+      <li><a href="">service</a></li>
+      <li><a href="index.html">login</a></li>
+      <li><a href="">contact us</a></li>
+      <li><a href="#">my account</a></li>
+    </ul>
+  </div>-->
+
+   <div id="myCarousel" class="carousel slide" data-ride="carousel">
+     <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+      <li data-target="#myCarousel" data-slide-to="3"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <img src="renault_captur_signature-1600x900.jpg" alt="Image" height="5opx">
+        <div class="carousel-caption">
+          <h3>renault captur</h3>
+          
+        </div>      
+      </div>
+      <div class="item">
+        <img src="tata-nexon.jpg" alt="Image">
+        <div class="carousel-caption">
+          <h3>TATA NEXON</h3>
+        </div>      
+      </div>
+      <div class="item">
+        <img src="maruthib1.jpg" alt="Image">
+        <div class="carousel-caption">
+          <h3>MARUTHI BREEZE</h3>
+        </div>      
+      </div>
+      <div class="item">
+        <img src="tata-nexon.jpg" alt="Image">
+        <div class="carousel-caption">
+          <h3>TATA NEXON</h3>
+        </div>      
+      </div>
+    </div>
+     <!--Left and right controls-->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+</div>
+  
+<div class="container text-center">    
+  <h3>recommend for you</h3><br>
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="dizer.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <p>Swift Dizer</p>
+      <p><a href="dezire1">view details</a></p>
+      <!--<p>Current Project</p>-->
+    </div>
+    <div class="col-sm-3"> 
+      <img src="forecosport.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <p>forecosport</p>   
+      <p><a href="fordecosportd">view details</a></p> 
+    </div>
+  <div class="container text-center">    
+  <div class="row">
+    <div class="col-sm-3">
+      <img src="renaultcaptur.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <p>renaultcaptur</p>
+      <p><a href="renaultcaptur">view details</a></p>
+    </div>
+    <div class="col-sm-3"> 
+      <img src="volkswagan.jpg" class="img-responsive" style="width:100%" alt="Image">
+      <p>volkswagan</p> 
+      <p><a href="volkswagan">view details</a></p>   
+    </div>
+  </div>
+</div><br>
+<div>
+  <h1>Top sold cars</h1>
+<div class="galary">
+<a href="hondawvr"><img src="honda.jpg">&nbsp;&nbsp;</a>
+<a href="maruthis-cross"><img src="maruthis-cross.jpg">&nbsp;&nbsp;</a>
+<a href="marutivitatabreeze"><img src="marutivitatabreeze.jpg">&nbsp;&nbsp;</a>
+<a href="hyundai20"><img src="hyundaii20.jpg">&nbsp;&nbsp;</a>
+<a href="elitei20"><img src="i20.jpg">&nbsp;&nbsp;</a>
+<a href="volkswagenpolo"><img src="volkswagenpolo.jpg">&nbsp;&nbsp;</a>
+</div name=a1 id="about us">
+  <h1 id="about us" color="blue">ABOUT US</h1>
+  <div class="aboutus">
+  <p>
+    Welcome to findcar.com - India's largest auto media vehicle. findcar has always striven to serve car buyers and owners in the most comprehensive and convenient way possible. We provide a platform where car buyers and owners can research  buy and come together to discuss and talk about their cars.<br>
+   <h3>our mission:<br></h3>
+     Our mission is to bring joy and delight into car buying and ownership.
+     To achieve this goal, we aim to empower Indian consumers to make informed car buying and ownership decisions with exhaustive and un-biased information on cars through our expert reviews, owner reviews, detailed specifications and comparisons. We understand that a car is by and large the second-most expensive asset a consumer associates his lifestyle with.<br>
+    <h3>A Brief History:</br></h3>
+    findcar was launched in  2017 by BODLA SAi. Since then we have been credited with several initiatives for Indian car consumers.
+    In 2017, we became the first website in India to consolidate used car inventory across dealers and present it to car buyers as an online marketplace.
+</p>
+</div>
+</div>
+<div>
+<!--<h1 id="my account">my account</h1>
+</div>
+<div>
+<form class="form-horizontal" style= "border: 1px solid black;
+    margin-left:150px margin-right:20px;">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="nmae">name:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">name<button>edit</button></p>
+    </div>
+  </div><br>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">someone@example.com</p>
+    </div>
+  </div><br>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="number">&nbsp;mobile no:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">12345</p>
+    </div>
+  </div><br>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="email">&nbsp;password:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static">********</p>
+    </div>
+  </div>
+</form></div>-->
+<!--<footer class="container-fluid text-center">
+  <p>Footer Text</p>
+</footer>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+<script>
+
+AWS.config.update({
+  region: "us-east-2",
+  endpoint: 'https://dynamodb.us-east-2.amazonaws.com',
+  accessKeyId: "AKIAISH4FUOUVBJ2AAXA",
+  secretAccessKey: "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"
+});
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+var email = '';
+  
+  
+  
+$(function(){
+
+  var url_string = window.location.href
+  var url = new URL(url_string);
+  email = url.searchParams.get("email");
+  login_files(email);
+  
+  var links = $('#home').attr('href');
+  $('#home').attr('href',links+'?email='+email);
+  
+
+})
+
+function login_files(email){
+ var form_email = $('#email').val();
+  var params = {
+  TableName: "signup",
+  ProjectionExpression: "#email, #address, #mobile, #username, #car_name, #car_model ",
+  FilterExpression: "#email= :email",
+  ExpressionAttributeNames: {
+    "#email": "email",
+    "#address": "address",
+    "#mobile": "mobile",
+    "#username": "username",
+    "#car_name": "car_name",
+    "#car_model": "car_model"
+  },
+  ExpressionAttributeValues: {
+     ":email": email,
+  }
+  };
+  docClient.scan(params, onScan);
+}
+function onScan(err, data) {
+  if (err) {
+  console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+} else {
+  if(data.Items.length == 0)
+  {
+    alert('Invalid Login');
+  }
+  else{
+    $('#email').html(data.Items[0].email);
+    $('#password').html(data.Items[0].password);
+    $('#address').html(data.Items[0].address);
+    $('#username').html(data.Items[0].username);
+    $('#mobile').html(data.Items[0].mobile);
+    $('#car_name').html(data.Items[0].car_name);
+    $('#car_model').html(data.Items[0].car_model);
+    }
+  }
+ }
+</script>-->
+
+</body>
+</html>

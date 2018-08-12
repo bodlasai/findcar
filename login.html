@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>login</title>
+	<style type="text/css">
+		.row {
+    margin-left: -15px;
+    margin-right: 500px;
+}
+h1
+{
+	margin-left:580px;
+}
+body
+{
+	background-color:lightgrey;
+}
+
+	</style>
+
+</head>
+<body>
+	<!--<h2><span>one</span> stop to select car</h2>-->
+	<div class="first">
+</div>
+
+<h1>login Form</h1><br>
+<div class="row">
+
+
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4"></div>
+	<div class="col-sm-4">
+		<form onsubmit="return false;" id="login_form" name="login_form">
+		  <div class="form-group">
+		    <label for="email">Emailaddress:</label>
+		    <input type="text" class="form-control" id="email">
+		  </div><br>
+		  <div class="form-group">
+		    <label for="password">Password:</label>
+		    <input type="password" class="form-control" id="password">
+		  </div><br>
+		  <a href="create.html">create account</a><br><br>
+		  <button type="submit" class="btn btn-default">Submit</button>
+		  <br><br>
+  <div id="alert_msg"></div> 
+		</form>
+	</div>
+</div>
+</body>
+</html>
+<!--url : "https://vcdcfvsbbg.execute-api.us-east-2.amazonaws.com/loginstage/loginresourse?email="+email+"&password="+password, -->
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+
+<script type="text/javascript">
+
+AWS.config.update({
+  region: "us-east-1",
+  endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+  accessKeyId: "AKIAJLTFOG6HZFP7RNZA",
+  secretAccessKey: "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"
+});
+
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+$(function(){
+	$('#login_form').submit(function(){
+		login_files();
+	})
+})
+function login_files(){
+ var form_email = $('#email').val();
+	var params = {
+	TableName:"sai",
+	ProjectionExpression: "#email, #password",
+	FilterExpression: "#email= :email",
+	ExpressionAttributeNames: {
+		"#email":"email",
+		"#password":"password"
+	},
+	ExpressionAttributeValues: {
+		 ":email": form_email,
+	}
+	};
+	docClient.scan(params, onScan);
+}
+function onScan(err, data) {
+	if (err) {
+	console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+} else {
+	if(data.Items.length == 0)
+	{
+		alert('Invalid Login');
+	}
+	else{
+		 var form_password = $('#password').val();
+		var email = data.Items[0].email;
+		var password = data.Items[0].password;
+		if(password == form_password){
+			window.location.replace('myaccount?email='+email)
+		}
+		else{
+			alert('InValid Password');
+					
+		}
+	}
+ }
+}
+
+
+
+</script>	

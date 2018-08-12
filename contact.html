@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>contact us</title>
+	<meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<style type="text/css">
+		
+h1
+{
+	text-align:center;
+	font-size:30px;
+	color:white;
+
+}
+h3
+{
+	text-align:center;
+	font-size:30px;
+	color:white;
+
+}
+form
+{
+  margin:10px;
+  padding:10px;
+}
+.form-control {
+    display: block;
+    width:40%;
+}
+
+h4
+{
+	text-align:center;
+}
+body
+{
+	background-color:#9E9E9E;
+}
+
+
+	</style>
+</head>
+<body>
+<h1>CONTACT US</h1><hr width="800">
+<h3>we'd love to help u!</h3>
+<h4>feel free to say hello!</h4>
+<div class="container">
+    <div class="form-group">
+      <!--<label for="usr">Name:</label>-->
+      <input type="text" class="form-control" id="name" placeholder="yourname">
+    </div>
+    <div class="form-group">
+      <!--<label for="pwd">Password:</label>-->
+      <input type="email" class="form-control" id="email" placeholder="email">
+    </div>
+    <div class="hello">
+	<input type="text" class="form-control" id="message" placeholder="message"><br>	
+</div>
+<form onsubmit="return false;" id="contact" name="contact">
+  	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="padding:2px; width:30%;">send</button>
+  </form>
+</div>
+</form>
+<div class="container" style="margin-right:-700px;
+    margin-top:-203px;">
+  <p><span class="glyphicon glyphicon-envelope">&nbsp;&nbsp;findcar@gmail.com</span></p> <br>   
+  <p><span class="glyphicon glyphicon-map-marker"></span>&nbsp;sathyabama university, chennai</p><br>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p><br>
+  	<!--<p>
+    <button type="button" class="btn btn-default&nbsp;      <span class="glyphicon glyphicon-phone">&nbsp;&nbsp;123456789</span></button>
+  </p><br>-->
+ <hr size="3" width="400" style="margin-left:-90px">
+  <a href="https://www.facebook.com/"><img src="facebook.jpg"></a>
+  <a href=""><img src="linkedin.png"></a>
+  <a href=""><img src="google+.jpg"></a>
+  <a href=""><img src="twitter.png"></a>
+</div>
+ <script>
+$(function(){
+  
+  $('#contact').submit(function(){
+    var email = $('#email').val();
+    var yourname = $('#yourname').val();
+    var message = $('#message').val();
+    
+    $.ajax({
+      url: "https://n351q02wdi.execute-api.us-east-1.amazonaws.com/contactstage/saicontactresource?email="+email+"&yourname="+yourname+"&message="+message,
+      type:"GET",
+      success:function(data){
+        
+      }   
+    })
+    
+    $('#email').val('');
+    $('#yourname').val('');
+    $('#message').val('');
+    
+    $('#alert_msg').html('<div class="alert alert-success"><strong>Success!</strong> your message successfully sent !!</div>')
+        
+    
+  })
+
+
+})
+</script>
+
+</body>
+</html>
+
+
+<!-- <script>
+$(function(){
+  
+  $('#contact').submit(function(){
+    var email = $('#email').val();
+    var name = $('#name').val();
+    var message = $('#message').val();
+    
+    $.ajax({
+      url: "https://d8p4tsm1m5.execute-api.us-east-2.amazonaws.com/contactstage/contactresourse?email="+email+"&name="+name+"&message="+message,
+      type:"GET",
+      success:function(data){
+        
+      }   
+    })
+    
+    $('#email').val('');
+    $('#name').val('');
+    $('#message').val('');
+    
+    $('#alert_msg').html('<div class="alert alert-success"><strong>Success!</strong> your message successfully sent !!</div>')
+        
+    
+  })
+
+
+})
+</script>-->
+
+
+
+
+
+<!--<div class="row">
+    <div class="col-md-4">
+      <p>Fan? Drop a note.</p>
+      <p><span class="glyphicon glyphicon-map-marker"></span>Chicago, US</p>
+      <p><span class="glyphicon glyphicon-phone"></span>Phone: +00 1515151515</p>
+      <p><span class="glyphicon glyphicon-envelope"></span>Email: mail@mail.com</p>
+    </div>-->

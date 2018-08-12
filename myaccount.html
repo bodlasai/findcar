@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>account</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+    h1
+    {
+      text-align:center;
+      margin-top:50px;
+    }
+    .form-horizontal .form-group {
+    margin-right: -400px;
+    margin-left: 59px;
+  }
+  button
+  {
+    margin-left:390px;
+    background-color:orange;
+    font-size:20px;
+  }
+  button:hover
+  {
+    background-color:white
+  }
+  h1
+  {
+    color:blue;
+  }
+  body
+  {
+    background-color:#2a8aae38;
+  }
+  </style>
+  <body>
+
+
+<!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="home.html">
+        <img src="carlogo.png" alt="Logo" style="width:40px; height:30px;">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="/">Home</a></li>
+        <li><a href="contact">Contact us</a></li>
+        <li><a href="#about us">About us</a></li>
+        <li><a href="allcars">All cars</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="create"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="/"><span class="glyphicon glyphicon-user"></span>my account</a></li>
+    <li><a href="login"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+
+<h1>my account</h1>
+</div>
+<div style="margin-left:400px;margin-right:400px;">
+<form class="form-horizontal" style= "border: 1px solid black;
+    margin-left:-10px; margin-top:10px;">
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="nmae">name:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static" id="username">-- </p>
+    </div>
+    
+  </div><br>
+  <div class="form-group">
+    <label class="control-label col-sm-2" for="email">Email:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"  id="email">--</p>
+    </div>
+  </div><br>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="number">&nbsp;mobile no:</label>
+    <div class="col-sm-2">
+      <p class="form-control-static"  id="mobile">--</p>
+    </div>
+  </div><br>
+   <div class="form-group">
+    <label class="control-label col-sm-2" for="email" >&nbsp;car_name</label>
+    <div class="col-sm-2">
+      <p class="form-control-static" id="car_name">--</p>
+    </div>
+  </div><br>
+    <div class="form-group">
+    <label class="control-label col-sm-2" for="email" >&nbsp;car_model</label>
+    <div class="col-sm-2">
+      <p class="form-control-static" id="car_model">--</p>
+    </div>
+  </div><br>
+   
+<div class="form-group">
+    <label class="control-label col-sm-2" for="email">&nbsp;address</label>
+    <div class="col-sm-2">
+      <p class="form-control-static" id="address">--</p>
+    </div>
+
+
+
+  </div>
+</form>
+</div><br>
+<button>Done</button>
+<button>edit</button>
+</body>
+</head>
+</html>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+<script>
+
+AWS.config.update({
+  region: "us-east-1",
+  endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+  accessKeyId: "AKIAJLTFOG6HZFP7RNZA",
+  secretAccessKey: "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"
+});
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+var email = '';
+	
+	
+	
+$(function(){
+
+	var url_string = window.location.href
+	var url = new URL(url_string);
+	email = url.searchParams.get("email");
+	login_files(email);
+	
+  var links = $('#all_Cars').attr('href');
+  $('#all_Cars').attr('href',links+'?email='+email);
+	
+
+})
+
+function login_files(email){
+ var form_email = $('#email').val();
+	var params = {
+	TableName: "sai",
+	ProjectionExpression: "#email, #address, #mobile, #username, #car_name, #car_model ",
+	FilterExpression: "#email= :email",
+	ExpressionAttributeNames: {
+		"#email": "email",
+		"#address": "address",
+		"#mobile": "mobile",
+		"#username": "username",
+    "#car_name": "car_name",
+    "#car_model": "car_model"
+	},
+	ExpressionAttributeValues: {
+		 ":email": email,
+	}
+	};
+	docClient.scan(params, onScan);
+}
+function onScan(err, data) {
+	if (err) {
+	console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+} else {
+	if(data.Items.length == 0)
+	{
+		alert('Invalid Login');
+	}
+	else{
+		$('#email').html(data.Items[0].email);
+		$('#password').html(data.Items[0].password);
+		$('#address').html(data.Items[0].address);
+		$('#username').html(data.Items[0].username);
+		$('#mobile').html(data.Items[0].mobile);
+		$('#car_name').html(data.Items[0].car_name);
+    $('#car_model').html(data.Items[0].car_model);
+		}
+	}
+ }
+</script>
+
+ 

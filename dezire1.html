@@ -1,0 +1,227 @@
+<html lang="en">
+<head>
+  <title>swift dezire</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <style type="text/css">
+  	.sai
+  	{
+     font-size:20px;
+     text-align:right;
+     margin-top:-5px;
+         margin-top: -250px;
+         margin-right:95px;
+     padding:50px;
+     
+  	}
+  	button, input, optgroup, select, textarea {
+  		margin-left:130px;
+  		padding:10px;
+  	}
+
+    table,th,td
+    {
+         border:2px solid black;
+         border-collapse:collapse
+         }
+    table
+    {
+    width:800px;
+    height:200px;
+    }
+    th
+    {
+      border-bottom:2px solid black;
+      text-decoration:none;
+    }
+    td
+    {
+      text-decoration:none;
+    } 
+    h2
+    {
+      margin-left:500px;
+    }
+    h1
+    {
+      text-align:center;
+    }
+    
+     .dezire 
+     {
+    margin-top:150px;
+    margin-left:90px;
+    }
+  </style>
+</head>
+<body>
+  <!--<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="home.html">
+        <img src="carlogo.png" alt="Logo" style="width:40px; height:30px;">
+      </a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav">
+        <li class="active"><a href="home.html">Home</a></li>
+        <li><a href="contact.html">Contact us</a></li>
+        <li><a href="#about us">About us</a></li>
+        <li><a href="allcars.html">All cars</a></li>
+        
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li><a href="create.html"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
+        <li><a href="#my account"><span class="glyphicon glyphicon-user"></span>my account</a></li>
+        <li><a href="login.html"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>-->
+<div class="container">
+  <h1 id="car_name">SWIFT DEZIRE</h2><br>
+    <hr size="3" color="red" width="800">
+</div>
+  <!--<p>The .img-thumbnail class creates a thumbnail of the image:</p>-->            
+  &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<img src="dizer.jpg" class="img-thumbnail" alt="Cinque Terre" width="304" height="236" class="product_cars"> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<button style="width: 200px;background-color:orange;color: #0a0000" id="buy" >Buy Now</button>
+  <h2 color="green">&nbsp;&nbsp;Rs 5.37 - 9.35 Lakh*</h2>
+  <div style="font-size:18px;position:absolute;border:1px solid black">
+  <p>The Maruti Suzuki Dzire has crossed 1 lakh sales milestone in a record-breaking five months in India (launched in May 2017). The new, third-gen model averages well over 30k units monthly, which is almost double compared to the second-gen model. 
+The o ddly integrated boot was one of the biggest bottlenecks in the previous model’s packaging and it is commendable how Maruti has beautifully integrated the boot in restricted dimensions (sub-4m sedan) this time around. Further, availability of an automatic option (automated manual transmission) with both petrol and diesel engines, along with a long list of equipment with goodies such as LED projector headlamps, Apple CarPlay and Android Auto and others has certainly helped the new Dzire double its monthly sales and become the bestselling car in the country. </p>
+</div>
+ <div class="dezire">
+<table>
+  <tr>`
+    <th>economy</th>
+    <th>perforemence</th>
+    <th>comfort</th>
+    <th>safety</th>
+  </tr>
+  <tr>
+    <td>Mileage 28.40 kmpl</td>
+    <td>Engine  1248 c</td>
+    <td> A/C Yes</td>
+    <td>Central LockYes</td>
+  </tr>
+  <tr>
+    <td>Service Cost :Rs 5,310</td>
+    <td>BHP 74</td>   
+    <td>Power SteeringYes</td>
+    <td>Brake AssistYes</td>
+  </tr>
+  <tr>
+    <td>Fuel Type  :Diesel</td>
+    <td>No. of Cylinders  4</td>
+    <td>Seating Capacity 5</td>
+    <td>Parking SensorYes</td>
+  </tr>
+  <tr>
+    <td>Fuel Tank :37 Litres</td>
+    <td>No. of Gears  5 Speed</td>
+    <td>Boot Space378-liter</td>
+    <td>AirbagsYes</td>
+  </tr>
+</table>
+</div>
+<script src="https://sdk.amazonaws.com/js/aws-sdk-2.7.16.min.js"></script>
+<script type="text/javascript">
+
+AWS.config.update({
+  region: "us-east-1",
+  endpoint: 'https://dynamodb.us-east-1.amazonaws.com',
+  accessKeyId:  "AKIAJLTFOG6HZFP7RNZA",
+  secretAccessKey:"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"
+});
+
+var dynamodb = new AWS.DynamoDB();
+var docClient = new AWS.DynamoDB.DocumentClient();
+
+$(function(){
+  var url_string = window.location.href
+  var url = new URL(url_string);
+  var email = url.searchParams.get("email");
+
+  $('#buy').click(function(){
+     login_files(email);
+
+  })
+ 
+})
+function login_files(email){
+ var form_email = email;
+  var params = {
+  TableName: "signup",
+  ProjectionExpression: "#email, #password, #address, #mobile, #username, #userno, #car_model, #car_name",
+  FilterExpression: "#email= :email",
+  ExpressionAttributeNames: {
+    "#email": "email",
+    "#password": "password",
+    "#address": "address",
+    "#mobile": "mobile",
+    "#username": "username",
+    "#userno": "userno",
+    "#car_model": "car_model",
+     "#car_name": "car_name"
+  },
+  ExpressionAttributeValues: {
+     ":email": form_email,
+  }
+  };
+  docClient.scan(params, onScan);
+}
+function onScan(err, data) {
+  if (err) {
+  console.error("Unable to scan the table. Error JSON:", JSON.stringify(err, null, 2));
+} else {
+  if(data.Items.length == 0)
+  {
+    alert('Invalid Login');
+  }
+  else{
+    var form_password = $('#password').val();
+    var email = data.Items[0].email;
+    var password = data.Items[0].password;
+    
+    var email = data.Items[0].email;
+    var password = data.Items[0].password;
+    var address = data.Items[0].address;
+    var mobile = data.Items[0].mobile;
+    var username = data.Items[0].username;
+    var userno = data.Items[0].userno;
+    var car_model = $('#car_name').html();
+    var car_name = $('#car_name').html();
+
+     $.ajax({
+      url:  " https://wq8m3jz3h1.execute-api.us-east-1.amazonaws.com/retrivestage/updateresource?email="+email+"&password="+password+"&mobile="+mobile+"&username="+username+"&address="+address+"&userno=2&car_name="+car_name+"&car_model="+car_model,
+      type:"GET",
+      success:function(data){
+           }   
+    })
+       
+
+
+  }
+ }
+}
+
+function update_db(email,password){
+
+
+
+
+
+
+}
+</script>  
+      }   
+    })
+</body>
+</html>
